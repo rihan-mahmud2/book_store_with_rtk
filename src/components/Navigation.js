@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Navigation = () => {
   return (
@@ -12,16 +13,17 @@ const Navigation = () => {
         />
 
         <ul className="hidden md:flex items-center space-x-6">
-          <a
+          <Link
+            to="/"
             className="font-semibold cursor-pointer"
             href="index.html"
             id="lws-bookStore"
           >
             <li>Book Store</li>
-          </a>
-          <a className="cursor-pointer" href="AddBook.html" id="lws-addBook">
+          </Link>
+          <Link to="/addBook" className="cursor-pointer" id="lws-addBook">
             <li>Add Book</li>
-          </a>
+          </Link>
         </ul>
 
         <form className="flex items-center">
