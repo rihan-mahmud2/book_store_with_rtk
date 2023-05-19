@@ -70,7 +70,6 @@ const AddForm = () => {
           class="w-4 h-4"
         />
         <label for="lws-featured" class="ml-2 text-sm">
-          {" "}
           This is a featured book{" "}
         </label>
       </div>
