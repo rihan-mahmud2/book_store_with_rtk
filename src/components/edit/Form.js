@@ -12,12 +12,12 @@ const Form = ({ book }) => {
     rating: editingRating,
   } = book || {};
 
-  const [name, setName] = useState("");
-  const [author, setAuthor] = useState("");
-  const [thumbnail, setThumbnail] = useState("");
-  const [price, setPrice] = useState("");
-  const [rating, setRating] = useState("");
-  const [featured, setFeatured] = useState(false);
+  const [name, setName] = useState(editingName);
+  const [author, setAuthor] = useState(editingAuthor);
+  const [thumbnail, setThumbnail] = useState(editingThumbnail);
+  const [price, setPrice] = useState(editingPrice);
+  const [rating, setRating] = useState(editingRating);
+  const [featured, setFeatured] = useState(editingFeatured);
 
   const [editBook, { isLoading, isError }] = useEditBookMutation();
 
@@ -41,7 +41,7 @@ const Form = ({ book }) => {
       <div class="space-y-2">
         <label for="lws-bookName">Book Name</label>
         <input
-          value={editingName}
+          value={name}
           onChange={(e) => setName(e.target.value)}
           required
           class="text-input"
@@ -54,7 +54,7 @@ const Form = ({ book }) => {
       <div class="space-y-2">
         <label for="lws-author">Author</label>
         <input
-          value={editingAuthor}
+          value={author}
           onChange={(e) => setAuthor(e.target.value)}
           required
           class="text-input"
@@ -67,7 +67,7 @@ const Form = ({ book }) => {
       <div class="space-y-2">
         <label for="lws-thumbnail">Image Url</label>
         <input
-          value={editingThumbnail}
+          value={thumbnail}
           onChange={(e) => setThumbnail(e.target.value)}
           required
           class="text-input"
@@ -81,7 +81,7 @@ const Form = ({ book }) => {
         <div class="space-y-2">
           <label for="lws-price">Price</label>
           <input
-            value={editingPrice}
+            value={price}
             onChange={(e) => setPrice(e.target.value)}
             required
             class="text-input"
@@ -95,7 +95,7 @@ const Form = ({ book }) => {
           <label for="lws-rating">Rating</label>
           <input
             onChange={(e) => setRating(e.target.value)}
-            value={editingRating}
+            value={rating}
             required
             class="text-input"
             type="number"
@@ -110,7 +110,7 @@ const Form = ({ book }) => {
       <div class="flex items-center">
         <input
           onChange={() => setFeatured(!featured)}
-          value={editingFeatured}
+          checked={featured}
           id="lws-featured"
           type="checkbox"
           name="featured"

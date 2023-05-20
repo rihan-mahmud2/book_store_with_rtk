@@ -1,10 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useDeleteBookMutation } from "../../features/api/api";
 
 const Book = ({ book }) => {
   const { name, price, thumbnail, featured, author, id } = book || {};
 
-  //rendering rating comp
+  const [deleteBook, { isLoading, isError, isSuccess }] =
+    useDeleteBookMutation();
+
+  const handleDelete = () => {
+    deleteBook(id);
+  };
 
   return (
     <div class="book-card">
@@ -35,7 +41,11 @@ const Book = ({ book }) => {
               </button>
             </Link>
 
-            <button class="lws-deleteBook">
+            <button
+              disabled={isLoading}
+              onClick={handleDelete}
+              class="lws-deleteBook"
+            >
               <svg
                 fill="none"
                 viewBox="0 0 24 24"
@@ -50,6 +60,12 @@ const Book = ({ book }) => {
                 />
               </svg>
             </button>
+
+            {isError && (
+              <p className="error">There was an error deleting the book</p>
+            )}
+
+            {isSuccess && <p>the book is deleted successfully</p>}
           </div>
         </div>
 

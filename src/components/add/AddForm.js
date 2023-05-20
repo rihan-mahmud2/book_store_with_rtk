@@ -11,6 +11,16 @@ const AddForm = () => {
 
   const [addBook, { isLoading, isError }] = useAddBookMutation();
 
+  const reset = () => {
+    setName("");
+    setPrice("");
+    setAuthor("");
+    setFeatured("");
+    setRating("");
+    setPrice("");
+    setThumbnail("");
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     addBook({
@@ -21,6 +31,7 @@ const AddForm = () => {
       featured,
       thumbnail,
     });
+    reset();
   };
 
   return (
